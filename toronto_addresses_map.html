@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toronto Addresses Map</title>
+    <style>
+        body, html { height: 100%; margin: 0; }
+        #map { height: 100%; }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-search/dist/leaflet-search.src.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([43.661, -79.383], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        var addressLayer = L.layerGroup().addTo(map);
+
+        function addMarker(lat, lon, address, pros, cons, borderColor) {
+            var marker = L.marker([lat, lon]).addTo(addressLayer);
+            var popupContent = "<b>" + address + "</b><br>优点:<br>" + pros.join("<br>") + "<br>缺点:<br>" + cons.join("<br>");
+            marker.bindPopup(popupContent);
+            marker._icon.style.borderColor = borderColor;
+        }
+
+        // Adding the markers
+
+        addMarker(43.670905, -79.386663, "1 Bloor 街", [], [], 'orange');
+    
+        addMarker(43.641169, -79.379592, "100 Harbour 街", ['湖边'], [], 'orange');
+    
+        addMarker(43.66635, -79.38189, "101 Charles 街", ['外国人楼', '十分钟内四个超市'], [], 'orange');
+    
+        addMarker(43.668045, -79.391593, "1055 Bay 街", ['人口老龄化', '安静', '设施不算老', '空间大', '学生少'], ['老楼'], 'orange');
+    
+        addMarker(43.662179, -79.383321, "11 Joseph 街", [], [], 'orange');
+    
+        addMarker(43.664544, -79.384576, "11 Wellesley 街", [], ['被偷外卖', '电梯又挤又慢'], 'orange');
+    
+        addMarker(43.66635, -79.381249, "110 Charles 街", ['外国人楼', '十分钟内四个超市'], [], 'orange');
+    
+        addMarker(43.662129, -79.383808, "15 Grenville 街", [], ['15楼顶层漏水', '阳光不好'], 'orange');
+    
+        addMarker(43.66635, -79.382481, "17 Dundonald 街", [], [], 'orange');
+    
+        addMarker(43.662815, -79.385902, "37 Grosvenor 街", ['很大', '外卖可以送上楼'], [], 'orange');
+    
+        addMarker(43.662309, -79.38361, "38 Grenville 街", [], ['漏水'], 'orange');
+    
+        addMarker(43.658812, -79.382251, "386/388 Yonge 街", [], [], 'orange');
+    
+        addMarker(43.666222, -79.382163, "42 Charles 街 E", ['靠近地铁'], ['有流浪汉，但是没有攻击性'], 'orange');
+    
+        addMarker(43.657436, -79.389331, "488 University 街", ['地理位置好', '直通地铁'], [], 'orange');
+    
+        addMarker(43.663507, -79.383482, "501 Yonge 街", ['30层以下需要选好方向'], ['电梯不好', '冰箱小', '外卖不能送上楼', '游泳池没开放', '火警频繁'], 'orange');
+    
+        addMarker(43.766602, -79.414383, "5180 Yonge 街", [], ['电梯一直坏'], 'orange');
+    
+        addMarker(43.655441, -79.377289, "60 Shuter 街", ['智能locker', '健身房', '坐地铁方便'], ['没阳台'], 'orange');
+    
+        addMarker(43.661692, -79.38341, "7 Grenville 街", [], ['有点小', '漏水'], 'orange');
+    
+        addMarker(43.660596, -79.385305, "832 Bay 街", [], [], 'orange');
+    
+        addMarker(43.641646, -79.37893, "88 Harbour 街", ['湖边'], [], 'orange');
+    
+        addMarker(43.66626, -79.38228, "33 Charles 街", ['房型好'], [], 'orange');
+    
+        addMarker(43.661309, -79.379165, "365 Church 街", ['开发商好', '高层view好', '无遮挡'], [], 'orange');
+    
+        addMarker(43.665294, -79.387013, "5 St Joseph 街", ['前台人好'], ['漏水', '电梯全坏'], 'orange');
+    
+        addMarker(43.664899, -79.38657, "57 St Joseph 街", ['旁边图书馆', '高层view好'], ['不隔音', '水脏'], 'orange');
+    
+        addMarker(43.671518, -79.394974, "188 Cumberland 街", ['楼下地铁站'], ['垃圾臭味很重', '楼道里有人airbnb'], 'orange');
+    
+        addMarker(43.662907, -79.378845, "85 Wood 街", ['距离loblaws很近'], ['有工地附近在装修', '等电梯时间很久'], 'orange');
+    
+        addMarker(43.660013, -79.38286, "Aura, Yonge 街", ['高层view好', '方便'], ['电梯一直坏', '火警频繁'], 'orange');
+    
+        addMarker(43.658168, -79.397456, "203 College 街", [], ['房间小', '有甲醛味道'], 'orange');
+    
+        addMarker(43.659898, -79.389518, "700 University Avenue, Toronto", [], [], 'red');
+    
+        addMarker(43.667123, -79.399616, "Rotman School of Management, Toronto", [], [], 'red');
+    
+        addMarker(43.66626, -79.38228, "33 Charles Street, Toronto", [], [], 'orange');
+    
+        addMarker(43.661309, -79.379165, "365 Church Street, Toronto", [], [], 'orange');
+    
+        var searchControl = new L.Control.Search({
+            layer: addressLayer,
+            initial: false,
+            zoom: 15,
+            marker: false,
+            textPlaceholder: '输入地址...',
+        });
+        map.addControl(searchControl);
+    </script>
+</body>
+</html>
